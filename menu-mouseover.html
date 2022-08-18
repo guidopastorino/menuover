@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Mouseover</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: sans-serif;
+            font-size: 18px;
+            height: 100vh;
+        }
+
+        nav{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0051ff;
+        }
+
+        nav > ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav > ul > li{
+            position: relative;
+            padding: 15px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        nav > ul > li:hover{
+            background: #0044d6;
+        }
+
+        nav > ul > li > span{
+            pointer-events: none;
+        }
+
+        .submenu{
+            position: absolute;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            width: 200px;
+            color: #fff;
+        }
+
+        .submenu *{
+            width: 100%;
+        }
+
+        .submenu a{
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .submenu a:hover{
+            background: rgb(11, 11, 11);
+        }
+
+        .d-none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <nav>
+        <ul>
+            <li>
+                <span>Item 1</span>
+
+                <div class="d-none">
+                    <ul>
+                        <li><a href="#">Subitem 1</a></li>
+                        <li><a href="#">Subitem 2</a></li>
+                        <li><a href="#">Subitem 3</a></li>
+                        <li><a href="#">Subitem 4</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <span>Item 2</span>
+
+                <div class="d-none">
+                    <ul>
+                        <li><a href="#">Subitem 1</a></li>
+                        <li><a href="#">Subitem 2</a></li>
+                        <li><a href="#">Subitem 3</a></li>
+                        <li><a href="#">Subitem 4</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <span>Item 3</span>
+
+                <div class="d-none">
+                    <ul>
+                        <li><a href="#">Subitem 1</a></li>
+                        <li><a href="#">Subitem 2</a></li>
+                        <li><a href="#">Subitem 3</a></li>
+                        <li><a href="#">Subitem 4</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <span>Item 4</span>
+
+                <div class="d-none">
+                    <ul>
+                        <li><a href="#">Subitem 1</a></li>
+                        <li><a href="#">Subitem 2</a></li>
+                        <li><a href="#">Subitem 3</a></li>
+                        <li><a href="#">Subitem 4</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <span>Item 5</span>
+
+                <div class="d-none">
+                    <ul>
+                        <li><a href="#">Subitem 1</a></li>
+                        <li><a href="#">Subitem 2</a></li>
+                        <li><a href="#">Subitem 3</a></li>
+                        <li><a href="#">Subitem 4</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+    <script>
+        
+        document.addEventListener('mouseover', e => {
+            if(e.target.tagName === 'LI') {
+                e.target.children[1].classList.replace('d-none', 'submenu')
+            }
+
+
+            if(e.target.tagName === 'A') {
+                e.composedPath()[3].classList.replace('d-none', 'submenu')
+            }
+        })
+
+
+        document.addEventListener('mouseout', e => {
+            if(e.target.tagName === 'LI') {
+                e.target.children[1].classList.replace('submenu', 'd-none')
+            }
+
+
+            if(e.target.tagName === 'A') {
+                e.composedPath()[3].classList.replace('submenu', 'd-none')
+            }
+        })
+
+        
+
+    </script>
+</body>
+</html>
